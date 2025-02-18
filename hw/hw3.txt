@@ -1,0 +1,8 @@
+1.
+Large 256 bit register widths allow large numbers and strings to be worked with easily. Had EVM a large set of SIMD instructions such as Intel SSE/2/3/4 etc. then vector computations would be easy as well. Unfortunately for general purpose instructions, most hardware is limited to 64 bit word sizes so implementing the wider EVM registers entails additional processing that often isn't used as most of the higher bits are often zero when dealing with numbers.
+
+2.
+Given that the implementation of precompiled contracts generally does vary between clients (as different clients are by definition different implementations) probably nothing unexpected would happen. However if one client was implemented incorrectly or its implementation of a precompiled contract differed such that it did not return the same results or have the same effects upon state, then the two clients would not agree on the result of executing a transaction/block etc. and consensus would break.
+
+3.
+N/A.
