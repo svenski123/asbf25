@@ -1,0 +1,5 @@
+1.
+See hw2/.
+
+2.
+In tools and code that dynamically creates selectors from function prototypes it is conceivable that inadvertent methods could be called. For example, deploying a contract that dispatches an invalid selector created where 'uint' has not been canonicalised to 'uint256' and then through some callback method that takes the function prototype as a string and computes the hashed selector value itself, cause the unexpected method to be called.
