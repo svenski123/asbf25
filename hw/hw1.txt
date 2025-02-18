@@ -1,0 +1,11 @@
+1.
+Ethereum client diversity is important for a number of reasons, particularly safety, for many of the same reasons that NASA comssioned independent teams to implement redundant copies of various control systems so that an error in one system wouldn't jeopardise the entire flight. In the context of Ethereum it would be important that stake is divided up such that no one node implementation is running on more than a superminority of nodes. Other than safety, having different implementations can make Ethereum more widely accessible to different technology stacks and host systems (i.e. such as Go, .NET, Rust, C/C++, etc.).
+
+2.
+Full nodes typically have all blocks, block headers and transactions from genesis as well as full state for the last 256 blocks. Archive nodes will have everything.
+
+3.
+Replay attacks generally involve a third party capturing traffic and replaying it later to cause unintended side effects. In EVM compatible chains, including the nonce and the chain id in the signature payload can prevent a replayed transaction from being executed twice. Other chains includiong an explicit deadline or recent block number/hash to prevent execution and commitment of a replayed message long after it was first executed.
+
+4.
+The CALLER opcode in the EVM returns the address of the caller of the current contract (referred to as msg.sender in solidity). A public or external view function can be invoked directly by another contract or an EOA which would be the msg.sender, whereas an internal function would be called by another function in the same contract (in which case msg.sender would not change). As view functions do not have side effects, they are generally not executed as transactions by themselves which would just burn gas and increment nonces.
