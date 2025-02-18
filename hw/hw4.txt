@@ -1,0 +1,5 @@
+1.
+Yes it is possible to reduce the padding by rearranging the data structure members from 61 storage slots to 44.
+
+2.
+Yes the nested function() external pure defintion is valid solidity.
