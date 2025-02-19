@@ -1,0 +1,10 @@
+1.
+The CODECOPY instruction is called with a destination offset of 0x0, a source offset of 0x27 and a size of 0xb6, which overwrites all working memory, including the areas reserved for scratch space, free memory pointer and the zero slot. The code, which appears to be a constructor, then immediately returns the just copied memory area.
+
+2.
+The constructor code is not optimised; not only are two values needlessly placed on the stack and then popped without being used, the free memory pointer area of memory is set and is then later clobbered without ever being used; this setup could simply be elided.
+
+3.
+The constructor will revert if non-zero value is passed to the function (i.e. CALLVALUE returns something other than zero).
+
+4.
