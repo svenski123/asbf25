@@ -1,0 +1,63 @@
+DogCoinGame
+
+addPlayer(_player)
+- function allows anyone to add someone else as player
+- same player can be added multiple times
+  > remove _player, use msg.sender instead so caller can only add itself
+  - msg.value checked against 1 WEI, should be 1 ETH
+  - assuming msg.value check passes, player always added even if 200
+players have already been added
+- any money sent is kept by contract even if player not added
+  > check all invariants before changing any state such as adding
+players to the array
+- numberPlayers variable always incremented, even if msg.value check
+failed or too many players already added
+  > remove numberPlayers entirely and use length of players array
+instead
+- startPayout event not emitted on 200th player to be added (check as
+written is >200)
+- startPayout event emitted multiple times, on 201st player and every
+player added thereafter
+  > invariants should be checked first, revert if any fail
+  
+  addWinner()
+  - I guess everyone's a winner?
+  - Anyone can add anyone else as a winner, winners don't need to be
+players
+- same address can be added as a winner multiple times
+
+payout()
+- anyone can call payout(), not just the UI
+- contract balance check is for 100 WEI, not 100 ETH
+- if balance not exactly 100, nobody gets anything
+- if fewer than 100 winners, amountToPay is zero (integer division)
+- conversely too many winners, amountToPay goes up and can be too high
+
+payWinners()
+- anyone can call payWinners() at any time
+- _amount parameter isn't checked, first winner can get all the funds
+as send isn't checked
+- payWinners() can be called before payout() or even before 200
+players have been added
+
+BrokenSea
+
+The bids storage key mapping is constructed by the XOR of the ERC20
+and ERC721 contract addresses, thus swapping the ERC20 and ERC721
+contract addresses will result in the same bids storage key.
+
+The transferFrom() methods of the ERC20 and ERC721 contracts have the
+same signature; whereas the former takes an amount parameter and the
+latter a token id parameter, both parameters are of the same type
+uint256. Furthermore the ERC721 transferFrom() method does not return
+a value and thus its invocation would be considered to be a success
+transfer by SafeTransferLib.safeTransferFrom().
+
+The end result is that by swapping the ERC20 and ERC721 contracts on
+the call to acceptBid(), the NFT with the ERC721 token id of 'price'
+will be paid by the bidder and the seller will transfer the amount of
+'erc721TokenId' ERC20 tokens to the bidder, which is the opposite of
+what was intended. Note there is the constraint that the bid price
+must exceed the price pass to acceptBid(), however if the ERC721 token
+ids are allocated sequentially starting from zero or one, the 'price'
+passed into acceptBid() will be very low indeed.
