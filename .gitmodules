@@ -7,3 +7,6 @@
 [submodule "hw/hw12/lvl0/lib/foundry-huff"]
 	path = hw/hw12/lvl0/lib/foundry-huff
 	url = https://github.com/huff-language/foundry-huff
+[submodule "hw/hw12/lvl1/lib/forge-std"]
+	path = hw/hw12/lvl1/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
