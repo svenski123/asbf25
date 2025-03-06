@@ -10,3 +10,6 @@
 [submodule "hw/hw12/lvl1/lib/forge-std"]
 	path = hw/hw12/lvl1/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "hw/hw12/asbf25_ctf/lib/forge-std"]
+	path = hw/hw12/asbf25_ctf/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
