@@ -1,0 +1,4 @@
+forge-std/=lib/forge-std/src/
+src/CTF.sol/=src/CTF.sol/
+ds-test/=lib/forge-std/lib/ds-test/src/
+@openzeppelin/=lib/openzeppelin-contracts/
