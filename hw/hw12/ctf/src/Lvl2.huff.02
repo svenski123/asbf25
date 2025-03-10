@@ -1,0 +1,106 @@
+/* Interface */
+//#define function solution() pure returns (uint8)
+#define macro MAIN() = takes (0) returns (0) {
+
+		0x000				// 0
+		0x124 calldataload		// j 0
+		0x104 calldataload		// i j 0
+		0x0e4 calldataload		// h i j 0
+		0x0c4 calldataload		// g h i j 0
+		0x0a4 calldataload		// f g h i j 0
+		0x084 calldataload		// e f g h i j 0
+		0x064 calldataload		// d e f g h i j 0
+		0x044 calldataload		// c d e f g h i j 0
+		0x024 calldataload		// b c d e f g h i j 0
+		0x004 calldataload		// a b c d e f g h i j 0
+
+		dup1 dup3 gt label_ac jumpi swap1
+label_ac:	dup1 dup4 gt label_ad jumpi swap2
+label_ad:	dup1 dup5 gt label_ae jumpi swap3
+label_ae:	dup1 dup6 gt label_af jumpi swap4
+label_af:	dup1 dup7 gt label_ag jumpi swap5
+label_ag:	dup1 dup8 gt label_ah jumpi swap6
+label_ah:	dup1 dup9 gt label_ai jumpi swap7
+label_ai:	dup1 dup10 gt label_aj jumpi swap8
+label_aj:	dup1 dup11 gt label_bc jumpi swap9
+
+label_bc:	swap1			// b a c d e f g h i j
+		dup1 dup4 gt label_bd jumpi swap2
+label_bd:	dup1 dup5 gt label_be jumpi swap3
+label_be:	dup1 dup6 gt label_bf jumpi swap4
+label_bf:	dup1 dup7 gt label_bg jumpi swap5
+label_bg:	dup1 dup8 gt label_bh jumpi swap6
+label_bh:	dup1 dup9 gt label_bi jumpi swap7
+label_bi:	dup1 dup10 gt label_bj jumpi swap8
+label_bj:	dup1 dup11 gt label_cd jumpi swap9
+
+label_cd:	swap2			// c a b d e f g h i j
+		dup1 dup5 gt label_ce jumpi swap3
+label_ce:	dup1 dup6 gt label_cf jumpi swap4
+label_cf:	dup1 dup7 gt label_cg jumpi swap5
+label_cg:	dup1 dup8 gt label_ch jumpi swap6
+label_ch:	dup1 dup9 gt label_ci jumpi swap7
+label_ci:	dup1 dup10 gt label_cj jumpi swap8
+label_cj:	dup1 dup11 gt label_de jumpi swap9
+
+label_de:	swap3			// d a b c e f g h i j
+		dup1 dup6 gt label_df jumpi swap4
+label_df:	dup1 dup7 gt label_dg jumpi swap5
+label_dg:	dup1 dup8 gt label_dh jumpi swap6
+label_dh:	dup1 dup9 gt label_di jumpi swap7
+label_di:	dup1 dup10 gt label_dj jumpi swap8
+label_dj:	dup1 dup11 gt label_ef jumpi swap9
+
+label_ef:	swap4			// e a b c d f g h i j
+		dup1 dup7 gt label_eg jumpi swap5
+label_eg:	dup1 dup8 gt label_eh jumpi swap6
+label_eh:	dup1 dup9 gt label_ei jumpi swap7
+label_ei:	dup1 dup10 gt label_ej jumpi swap8
+label_ej:	dup1 dup11 gt label_fg jumpi swap9
+
+label_fg:	swap5			// f a b c d e g h i j
+		dup1 dup8 gt label_fh jumpi swap6
+label_fh:	dup1 dup9 gt label_fi jumpi swap7
+label_fi:	dup1 dup10 gt label_fj jumpi swap8
+label_fj:	dup1 dup11 gt label_gh jumpi swap9
+
+label_gh:	swap6			// g a b c d e f h i j
+		dup1 dup9 gt label_gi jumpi swap7
+label_gi:	dup1 dup10 gt label_gj jumpi swap8
+label_gj:	dup1 dup11 gt label_hi jumpi swap9
+
+label_hi:	swap7			// h a b c d e f g i j
+		dup1 dup10 gt label_hj jumpi swap8
+label_hj:	dup1 dup11 gt label_ij jumpi swap9
+
+label_ij:	swap8			// i a b c d e f g h j
+		dup1 dup11 lt label_j_ jumpi swap9
+
+label_j_:				// j a b c d e f g h i 0
+
+		swap10			// 0 a b c d e f g h i j
+		pop
+		msize mstore
+		msize mstore
+		msize mstore
+		msize mstore
+		msize mstore
+		msize mstore
+		msize mstore
+		msize mstore
+		msize mstore
+		msize mstore
+
+//		0x120 mstore		// a b c d e f g h i
+//		0x000 mstore		// b c d e f g h i
+//		0x020 mstore		// c d e f g h i
+//		0x040 mstore		// d e f g h i
+//		0x060 mstore		// e f g h i
+//		0x080 mstore		// f g h i
+//		0x0a0 mstore		// g h i
+//		0x0c0 mstore		// h i
+//		0x0e0 mstore		// i
+//		0x100 mstore		//
+
+		0x140 0x000 return
+}

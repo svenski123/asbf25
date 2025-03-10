@@ -1,0 +1,19 @@
+
+object "Level1TemplateYul" {
+    code {
+        let _1 := datasize("Level1TemplateYul_deployed")
+        codecopy(0, dataoffset("Level1TemplateYul_deployed"), _1)
+        return(0, _1)
+    }
+    object "Level1TemplateYul_deployed" {
+        code {
+	    mstore(msize(), add(calldataload(0x004), calldataload(0x0c4)))
+	    mstore(msize(), add(calldataload(0x024), calldataload(0x0e4)))
+	    mstore(msize(), add(calldataload(0x044), calldataload(0x104)))
+	    mstore(msize(), add(calldataload(0x064), calldataload(0x124)))
+	    mstore(msize(), add(calldataload(0x084), calldataload(0x144)))
+	    mstore(msize(), add(calldataload(0x0a4), calldataload(0x164)))
+	    return(0, 0xc0)
+	}
+    }
+}

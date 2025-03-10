@@ -1,0 +1,187 @@
+/* Interface */
+//#define function solution() pure returns (uint8)
+
+#define macro CMPSWP() = takes(2) returns (2) { lt skip jumpi swap1 skip: }
+
+#define macro HEAPIFY10() = takes(2) returns (2) {
+		dup9 dup11 lt label0 jumpi swap9 swap8 swap9
+label0:		dup8 dup11 lt label1 jumpi swap9 swap7 swap9
+label1:		dup7 dup10 lt label2 jumpi swap8 swap6 swap8
+label2:		dup6 dup10 lt label3 jumpi swap8 swap5 swap8
+label3:		dup5 dup9 lt label4 jumpi swap7 swap4 swap7
+label4:		dup4 dup9 lt label5 jumpi swap7 swap3 swap7
+label5:		dup3 dup8 lt label6 jumpi swap6 swap2 swap6
+label6:		dup2 dup8 lt label7 jumpi swap6 swap1 swap6
+label7:		dup1 dup7 lt label8 jumpi swap5
+label8:
+}
+
+#define macro HEAPOP9() = takes(2) returns (2) {
+		dup8 dup10 lt label0 jumpi
+		dup7 dup9 gt label1 jumpi
+		swap8 swap7 swap8
+		dup6 dup9 lt label2 jumpi
+		dup5 dup7 gt label3 jumpi
+		swap7 swap5 swap7
+		dup2 dup7 lt label4 jumpi
+		dup1 dup3 gt label5 jumpi
+		swap5 swap1 swap5
+		labelX jump
+
+label0:		dup7 dup10 lt labelX jumpi
+label1:		swap8 swap6 swap8
+		dup4 dup8 lt label6 jumpi
+		dup3 dup5 gt label7 jumpi
+		swap6 swap3 swap6
+		labelX jump
+
+label2:		dup5 dup9 lt labelX jumpi
+label3:		swap7 swap4 swap7
+		labelX jump
+
+label4:		dup1 dup7 lt labelX jumpi
+label5:		swap5
+		labelX jump
+
+label6:		dup3 dup8 lt labelX jumpi
+label7:		swap6 swap2 swap6
+//		labelX jump
+labelX:
+}
+/*
+#define macro HEAPOP9() = takes(2) returns (2) {
+		dup8 dup10 lt label0 jumpi swap8 swap7 swap8
+		dup6 dup9 lt label1 jumpi swap7 swap5 swap7
+		dup2 dup7 lt label2 jumpi swap5 swap1 swap5 labelX jump
+label0:
+		dup7 dup10 lt labelX jumpi swap8 swap6 swap8
+		dup4 dup8 lt label3 jumpi swap6 swap3 swap6 labelX jump
+label1:
+		dup5 dup9 lt labelX jumpi swap7 swap4 swap7 labelX jump
+label3:
+		dup3 dup8 lt labelX jumpi swap6 swap2 swap6 labelX jump
+label2:
+		dup1 dup7 lt labelX jumpi swap5 /*labelX jump*/
+labelX:
+}
+*/
+#define macro HEAPOP8() = takes(2) returns (2) {
+		dup7 dup9 lt label0 jumpi swap7 swap6 swap7
+		dup5 dup8 lt label1 jumpi swap6 swap4 swap6
+		dup1 dup6 lt labelX jumpi swap4 labelX jump
+label0:
+		dup6 dup9 lt labelX jumpi swap7 swap5 swap7
+		dup3 dup7 lt label2 jumpi swap5 swap2 swap5 labelX jump
+label1:
+		dup4 dup8 lt labelX jumpi swap6 swap3 swap6 labelX jump
+label2:
+		dup2 dup7 lt labelX jumpi swap5 swap1 swap5 /*labelX jump*/
+labelX:
+}
+
+#define macro HEAPOP7() = takes(2) returns (2) {
+		dup6 dup8 lt label0 jumpi swap6 swap5 swap6
+		dup4 dup7 lt label1 jumpi swap5 swap3 swap5 labelX jump
+label0:
+		dup5 dup8 lt labelX jumpi swap6 swap4 swap6
+		dup2 dup6 lt label2 jumpi swap4 swap1 swap4 labelX jump
+label1:
+		dup3 dup7 lt labelX jumpi swap5 swap2 swap5 labelX jump
+label2:
+		dup1 dup6 lt labelX jumpi swap4 /*labelX jump*/
+labelX:
+}
+
+#define macro HEAPOP6() = takes(2) returns (2) {
+		dup5 dup7 lt label0 jumpi swap5 swap4 swap5
+		dup3 dup6 lt label1 jumpi swap4 swap2 swap4 labelX jump
+label0:
+		dup4 dup7 lt labelX jumpi swap5 swap3 swap5
+		dup1 dup5 lt labelX jumpi swap3 labelX jump
+label1:
+		dup2 dup6 lt labelX jumpi swap4 swap1 swap4 /*labelX jump*/
+labelX:
+}
+
+#define macro HEAPOP5() = takes(2) returns (2) {
+		dup4 dup6 lt label0 jumpi swap4 swap3 swap4
+		dup2 dup5 lt label1 jumpi swap3 swap1 swap3 labelX jump
+label0:
+		dup3 dup6 lt labelX jumpi swap4 swap2 swap4 labelX jump
+label1:
+		dup1 dup5 lt labelX jumpi swap3 /*labelX jump*/
+labelX:
+}
+
+#define macro HEAPOP4() = takes(2) returns (2) {
+		dup3 dup5 lt label0 jumpi swap3 swap2 swap3
+		dup1 dup4 lt labelX jumpi swap2 labelX jump
+label0:
+		dup2 dup5 lt labelX jumpi swap3 swap1 swap3 /*labelX jump*/
+labelX:
+}
+
+#define macro HEAPOP3() = takes(2) returns (2) {
+		dup2 dup4 lt label0 jumpi swap2 swap1 swap2 labelX jump
+label0:
+		dup1 dup4 lt labelX jumpi swap2 /*labelX jump*/
+labelX:
+}
+
+#define macro HEAPOP2() = takes(2) returns (2) {
+		dup1 dup3 lt labelX jumpi swap1 /*labelX jump*/
+labelX:
+}
+
+#define macro CS12() = takes(2) returns (2) { dup2 dup2 lt skip jumpi swap1 skip: }
+#define macro CS13() = takes(2) returns (2) { dup3 dup2 lt skip jumpi swap1 skip: }
+
+#define macro MAIN() = takes (0) returns (0) {
+
+		0x004 calldataload		// a b c d e f g h i j 0
+		0x024 calldataload		// b c d e f g h i j 0
+		0x044 calldataload		// c d e f g h i j 0
+		0x064 calldataload		// d e f g h i j 0
+		0x084 calldataload		// e f g h i j 0
+		0x0a4 calldataload		// f g h i j 0
+		0x0c4 calldataload		// g h i j 0
+		0x0e4 calldataload		// h i j 0
+		0x104 calldataload		// i j 0
+		0x124 calldataload		// j 0
+
+		HEAPIFY10()
+		/*
+		swap9 msize mstore
+		swap7 msize mstore
+		swap5 msize mstore
+		swap3 msize mstore
+		swap1 msize mstore
+		      msize mstore
+		      msize mstore
+		      msize mstore
+		      msize mstore
+		      msize mstore
+		*/
+		swap9 msize mstore HEAPOP9()
+		swap8 msize mstore
+		swap6 msize mstore
+		swap4 msize mstore
+		swap2 msize mstore
+		      msize mstore
+		      msize mstore
+		      msize mstore
+		      msize mstore
+		      msize mstore
+		/*
+		swap8 msize mstore HEAPOP8()
+		swap7 msize mstore HEAPOP7()
+		swap6 msize mstore HEAPOP6()
+		swap5 msize mstore HEAPOP5()
+		swap4 msize mstore HEAPOP4()
+		swap3 msize mstore HEAPOP3()
+		swap2 msize mstore HEAPOP2()
+		swap1 msize mstore
+		      msize mstore
+		*/
+		msize 0x000 return
+}

@@ -1,0 +1,16 @@
+object "Level5TemplateYul" {
+    code {
+        let _1 := datasize("Level5TemplateYul_deployed")
+        codecopy(0, dataoffset("Level5TemplateYul_deployed"), _1)
+        return(0, _1)
+    }
+    object "Level5TemplateYul_deployed" {
+        code {
+	    let b := calldataload(0x24)
+	    let a := calldataload(0x04)
+	    let i := 1
+	    mstore(0, add(add(and(i, or(a, b)), shr(i, a)), shr(i, b)))
+	    return(0, 32)
+	}
+    }
+}

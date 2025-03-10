@@ -1,0 +1,19 @@
+/* Interface */
+#define function solution(bytes memory packed) pure returns (uint16, bool, bytes6)
+
+#define macro CONSTRUCTOR() = takes (0) returns (0) {
+	__codesize(MAIN)
+	__codesize(CONSTRUCTOR)
+	push0
+	codecopy
+	0x1e
+	push0
+	return
+}
+
+#define macro MAIN() = takes (0) returns (0) {
+	0x07
+	pc 0x44 codesize calldatacopy
+	0x46 0x3f calldatacopy
+	msize 0x0 return
+}

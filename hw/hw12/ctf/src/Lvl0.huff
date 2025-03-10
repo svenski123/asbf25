@@ -1,0 +1,21 @@
+/* Interface */
+#define function solution() pure returns (uint8)
+
+#define macro CONSTRUCTOR() = takes (0) returns (0) {
+	__codesize(MAIN)
+	__codesize(CONSTRUCTOR)
+	push0
+	codecopy
+	0x2a
+	push0
+	return
+}
+
+#define macro MAIN() = takes (0) returns (0) {
+	codesize
+	push0
+	mstore
+	msize
+	push0
+	return
+}

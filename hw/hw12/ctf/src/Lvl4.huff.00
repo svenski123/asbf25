@@ -1,0 +1,88 @@
+/* Interface */
+//#define function solution() pure returns (uint8)
+
+#define constant BITS0_ODD = 0x5555555555555555555555555555555555555555555555555555555555555555
+#define constant BITS0_EVE = 0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#define constant BITS1_ODD = 0x3333333333333333333333333333333333333333333333333333333333333333
+#define constant BITS1_EVE = 0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+#define constant BITS2_ODD = 0x0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f
+#define constant BITS2_EVE = 0xf0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0
+#define constant BITS3_ODD = 0x00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff
+#define constant BITS3_EVE = 0xff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00
+#define constant BITS4_ODD = 0x0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff
+#define constant BITS4_EVE = 0xffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000
+#define constant BITS5_ODD = 0x00000000ffffffff00000000ffffffff00000000ffffffff00000000ffffffff
+#define constant BITS5_EVE = 0xffffffff00000000ffffffff00000000ffffffff00000000ffffffff00000000
+
+#define constant M0 = 0x5555555555555555555555555555555555555555555555555555555555555555
+#define constant M1 = 0x3333333333333333333333333333333333333333333333333333333333333333
+#define constant M2 = 0x0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f
+#define constant M3 = 0x00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff
+#define constant M4 = 0x0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff
+#define constant M5 = 0x0000000000000000ffffffffffffffff0000000000000000ffffffffffffffff
+#define constant M6 = 0x00000000000000000000000000000000ffffffffffffffffffffffffffffffff
+
+#define constant B7 = 0xffffffffffffffffffffffffffffffff00000000000000000000000000000000
+#define constant B6 = 0xffffffffffffffff0000000000000000ffffffffffffffff0000000000000000
+#define constant B5 = 0xffffffff00000000ffffffff00000000ffffffff00000000ffffffff00000000
+#define constant B4 = 0xffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000ffff0000
+#define constant B3 = 0xff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00
+#define constant B2 = 0xf0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0
+#define constant B1 = 0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+#define constant B0 = 0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+
+#define macro MAIN() = takes (0) returns (0) {
+	0x04 calldataload	// x
+
+	dup1 [B7] and 0x0 lt 0x7 shl
+	dup2 [B6] and 0x0 lt 0x6 shl
+	dup3 [B5] and 0x0 lt 0x5 shl
+	dup4 [B4] and 0x0 lt 0x4 shl
+	dup5 [B3] and 0x0 lt 0x3 shl
+	dup6 [B2] and 0x0 lt 0x2 shl
+	dup7 [B1] and 0x0 lt 0x1 shl
+	dup8 [B0] and 0x0 lt
+	or or or or or or or
+	0x2 exp
+	swap1 iszero
+	swap1 sub
+
+
+/*
+	BITS0_ODD		// m x
+	dup2			// x m x
+	and			// (x&m) x
+	BITS0_ODD		// m (x&m) x
+	dup3			// x m (x&m) x
+	0x1			// 1 x m (x&m) x
+	shr			// (x>>1) m (x&m) x
+	and			// ((x>>1)&m) (x&m) x
+	add			// (((x>>1)&m)+(x&m)) x
+
+	BITS1_ODD dup2 and BITS0_ODD dup3 0x1 shr and add
+	dup1 BITS1_ODD and dup2 BITS1_EVE and add
+	dup1 BITS2_ODD and dup2 BITS2_EVE and add
+	dup1 BITS3_ODD and dup2 BITS3_EVE and add
+	dup1 BITS4_ODD and dup2 BITS4_EVE and add
+	dup1 BITS5_ODD and dup2 BITS5_EVE and add
+*/
+/*
+	dup1 0x01 shr or
+	dup1 0x02 shr or
+	dup1 0x04 shr or
+	dup1 0x08 shr or
+	dup1 0x10 shr or
+	dup1 0x20 shr or
+	dup1 0x40 shr or
+	dup1 0x80 shr or
+
+	dup1 0x01 shr
+      	swap1 0x00 lt
+      	add
+*/
+
+      	0x00 mstore
+      	msize 0x00 return
+//      	0x20 0x00 return
+}

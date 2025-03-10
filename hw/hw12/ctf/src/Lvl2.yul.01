@@ -1,0 +1,133 @@
+object "Level2TemplateYul" {
+	code {
+		let siz := datasize("Level2TemplateYul_deployed")
+		let off := dataoffset("Level2TemplateYul_deployed")
+		codecopy(0, off, siz)
+		return(0, siz)
+	}
+
+	object "Level2TemplateYul_deployed" {
+		code {
+			let a := calldataload(0x004)
+			let b := calldataload(0x024)
+			let c := calldataload(0x044)
+			let d := calldataload(0x064)
+			let e := calldataload(0x084)
+			let f := calldataload(0x0a4)
+			let g := calldataload(0x0c4)
+			let h := calldataload(0x0e4)
+			let i := calldataload(0x104)
+			let j := calldataload(0x124)
+
+			let t
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			if lt(d,b){
+			{t:=b b:=d d:=t}
+			if lt(b,a){t:=a a:=b b:=t}
+			}
+			if lt(e,b){
+			{t:=b b:=e e:=t}
+			if lt(b,a){t:=a a:=b b:=t}
+			}
+			if lt(f,c){
+			{t:=c c:=f f:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			}
+			if lt(g,c){
+			{t:=c c:=g g:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			}
+			if lt(h,d){
+			{t:=d d:=h h:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+			if lt(b,a){t:=a a:=b b:=t}
+			}
+			if lt(i,d){
+			{t:=d d:=i i:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+			if lt(b,a){t:=a a:=b b:=t}
+			}
+			if lt(j,e){
+			{t:=e e:=j j:=t}
+			if lt(e,c){t:=c c:=e e:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			}
+
+			mstore(msize(), a)
+			a := j
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+			if lt(e,b){t:=b b:=e e:=t}
+			if lt(f,c){t:=c c:=f f:=t}
+			if lt(g,c){t:=c c:=g g:=t}
+			if lt(h,d){t:=d d:=h h:=t}
+			if lt(i,d){t:=d d:=i i:=t}
+
+
+			mstore(msize(), a)
+			a := i
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+			if lt(e,b){t:=b b:=e e:=t}
+			if lt(f,c){t:=c c:=f f:=t}
+			if lt(g,c){t:=c c:=g g:=t}
+			if lt(h,d){t:=d d:=h h:=t}
+
+
+			mstore(msize(), a)
+			a := h
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+			if lt(e,b){t:=b b:=e e:=t}
+			if lt(f,c){t:=c c:=f f:=t}
+			if lt(g,c){t:=c c:=g g:=t}
+
+
+			mstore(msize(), a)
+			a := g
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+			if lt(e,b){t:=b b:=e e:=t}
+			if lt(f,c){t:=c c:=f f:=t}
+
+
+			mstore(msize(), a)
+			a := f
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+			if lt(e,b){t:=b b:=e e:=t}
+
+
+			mstore(msize(), a)
+			a := e
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+			if lt(d,b){t:=b b:=d d:=t}
+
+
+			mstore(msize(), a)
+			a := d
+			if lt(b,a){t:=a a:=b b:=t}
+			if lt(c,a){t:=a a:=c c:=t}
+
+
+			mstore(msize(), a)
+			a := c
+			if lt(b,a){t:=a a:=b b:=t}
+
+
+			mstore(msize(), a)
+			a := b
+
+
+			mstore(msize(), a)
+			return(0, msize())
+		}
+	}
+}

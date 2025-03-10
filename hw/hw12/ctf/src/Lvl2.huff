@@ -1,0 +1,50 @@
+/* Interface */
+//#define function solution() pure returns (uint8)
+
+#define macro X2() = takes(0) returns (0) { dup2 dup2 lt skip jumpi swap1 skip: }
+#define macro X3() = takes(0) returns (0) { dup3 dup2 lt skip jumpi swap2 skip: }
+#define macro X4() = takes(0) returns (0) { dup4 dup2 lt skip jumpi swap3 skip: }
+#define macro X5() = takes(0) returns (0) { dup5 dup2 lt skip jumpi swap4 skip: }
+#define macro X6() = takes(0) returns (0) { dup6 dup2 lt skip jumpi swap5 skip: }
+#define macro X7() = takes(0) returns (0) { dup7 dup2 lt skip jumpi swap6 skip: }
+#define macro X8() = takes(0) returns (0) { dup8 dup2 lt skip jumpi swap7 skip: }
+#define macro X9() = takes(0) returns (0) { dup9 dup2 lt skip jumpi swap8 skip: }
+#define macro X0() = takes(0) returns (0) { dup10 dup2 lt skip jumpi swap9 skip: }
+
+#define macro MAIN() = takes (0) returns (0) {
+
+		0x004 calldataload		// a b c d e f g h i j 0
+		0x024 calldataload		// b c d e f g h i j 0
+		0x044 calldataload		// c d e f g h i j 0
+		0x064 calldataload		// d e f g h i j 0
+		0x084 calldataload		// e f g h i j 0
+		0x0a4 calldataload		// f g h i j 0
+		0x0c4 calldataload		// g h i j 0
+		0x0e4 calldataload		// h i j 0
+		0x104 calldataload		// i j 0
+		0x124 calldataload		// j 0
+
+		X0() X9() X8() X7() X6() X5() X4() X3() X2() msize mstore
+		X9() X8() X7() X6() X5() X4() X3() X2() msize mstore
+		X8() X7() X6() X5() X4() X3() X2() msize mstore
+		X7() X6() X5() X4() X3() X2() msize mstore
+		X6() X5() X4() X3() X2() msize mstore
+		X5() X4() X3() X2() msize mstore
+		X4() X3() X2() msize mstore
+		X3() X2() msize mstore
+		X2() msize mstore
+		msize mstore
+/*
+		X2() X3() X4() X5() X6() X7() X8() X9() X0() msize mstore
+		X2() X3() X4() X5() X6() X7() X8() X9() msize mstore
+		X2() X3() X4() X5() X6() X7() X8() msize mstore
+		X2() X3() X4() X5() X6() X7() msize mstore
+		X2() X3() X4() X5() X6() msize mstore
+		X2() X3() X4() X5() msize mstore
+		X2() X3() X4() msize mstore
+		X2() X3() msize mstore
+		X2() msize mstore
+		msize mstore
+*/
+		msize 0x0 return
+}

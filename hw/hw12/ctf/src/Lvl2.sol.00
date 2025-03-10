@@ -1,0 +1,162 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.17;
+
+/////////////////// ☆☆ extropyio ☆☆ /////////////////////
+//     -漫~*'¨¯¨'*·舞~ solidity ctf ~舞·*'¨¯¨'*~漫-     //
+/////////////////////////////////////////////////////////
+
+import "forge-std/Vm.sol";
+
+Vm constant vm = Vm(address(uint160(uint256(keccak256("hevm cheat code")))));
+
+interface Isolution2 {
+    function solution(uint256[10] calldata unsortedArray) external returns (uint256[10] memory sortedArray);
+}
+
+contract Level2Template is Isolution2 {
+    function sort3(uint a, uint b, uint c) public pure returns (uint, uint, uint) {
+	if (b<a) (a,b) = (b,a);
+	if (c<a) (a,c) = (c,a);
+	if (c<b) (b,c) = (c,b);
+	return (a,b,c);
+    }
+    function sort4(uint a, uint b, uint c, uint d) public pure returns (uint, uint, uint, uint) {
+	return sort4_impl0(a,b,c,d);
+    }
+    function sort4_impl2(uint a, uint b, uint c, uint d) public pure returns (uint, uint, uint, uint) {
+	if (b<a) (a,b) = (b,a);
+	if (d<c) (c,d) = (d,c);
+	if (d<a) return (c,d,a,b);
+	if (c<b) {
+	    (b,c) = (c,b);
+	    if (b<a) (a,b) = (b,a);
+	    if (d<c) (c,d) = (d,c);
+	    return (a,b,c,d);
+	} else {
+	    	return (a,b,c,d);
+	}
+    }
+    function sort4_impl1(uint a, uint b, uint c, uint d) public pure returns (uint, uint, uint, uint) {
+	if (b<a) (a,b) = (b,a);
+	if (c<a) (a,c) = (c,a);
+	if (d<a) (a,d) = (d,a);
+	if (c<b) (b,c) = (c,b);
+	if (d<b) (b,d) = (d,b);
+	if (d<c) (c,d) = (d,c);
+	return (a,b,c,d);
+    }
+    function sort4_impl0(uint a, uint b, uint c, uint d) public pure returns (uint, uint, uint, uint) {
+	if (b < a) (a, b) = (b, a);
+	if (d < c) (c, d) = (d, c);
+	if (d < a) (a, d) = (d, a);
+	if (c < b) (b, c) = (c, b);
+	if (b < a) (a, b) = (b, a);
+	if (d < c) (c, d) = (d, c);
+	return (a, b, c, d);
+    }
+    function sort5(uint a, uint b, uint c, uint d, uint e) public pure returns (uint, uint, uint, uint, uint) {
+	return sort5_impl1(a,b,c,d,e);
+    }
+    function sort5_impl0(uint a, uint b, uint c, uint d, uint e) public pure returns (uint, uint, uint, uint, uint) {
+	(a, b, c, d) = sort4(a, b, c, d);
+	if (e < b) {
+	    if (e < a) (a, b, c, d, e) = (e, a, b, c, d);
+	    else (b, c, d, e) = (e, b, c, d);
+	} else if (e < d) {
+	    if (e < c) (c, d, e) = (e, c, d);
+	    else (d, e) = (e, d);
+	}
+	return (a, b, c, d, e);
+    }
+    function sort5_impl1(uint a, uint b, uint c, uint d, uint e) public pure returns (uint, uint, uint, uint, uint) {
+	if (b<a) (a,b) = (b,a);
+	if (c<a) (a,c) = (c,a);
+	if (d<a) (a,d) = (d,a);
+	if (e<a) (a,e) = (e,a);
+	if (c<b) (b,c) = (c,b);
+	if (d<b) (b,d) = (d,b);
+	if (e<b) (b,e) = (e,b);
+	if (d<c) (c,d) = (d,c);
+	if (e<c) (c,e) = (e,c);
+	if (e<d) (d,e) = (e,d);
+	return (a,b,c,d,e);
+    }
+
+    /*
+    function mergesort(uint256[10] calldata x) external pure returns (uint256[10] memory y) {
+	for (uint i = 0; i < 10; i += 2) {
+	    uint a = x[i];
+	    uint b = x[i+1];
+	    if (b < a) (a, b) = (b, a);
+	    (y[i], y[i+1]) = (b, a);
+	}
+	uint[10] z; uint k = 0;
+	for (uint z = 0; z < 10; z += 4) {
+	    uint zz = z + 4;
+	    if (zz > 10) zz = 01;
+	    uint i = 0; uint j = 0; uint k = z;
+	    z[k++] = y[z+2+j] < y[z+i] ? y[z+2+j++] : y[z+i++]
+		
+	    uint a = x[i];
+	    uint b = x[i+1];
+	    if (b < a) (a, b) = (b, a);
+	    (y[i], y[i+1]) = (b, a);
+	}
+	
+    }
+    */
+
+    function solution(uint256[10] calldata unsortedArray) external pure returns (uint256[10] memory sortedArray) {
+        // TODO: Implement your solution here.
+	//	(sortedArray[0], sortedArray[1], sortedArray[2], sortedArray[3], sortedArray[4]) =
+	uint[5] memory a;
+	(a[0], a[1], a[2], a[3], a[4]) = sort5(unsortedArray[0], unsortedArray[1], unsortedArray[2], unsortedArray[3], unsortedArray[4]);
+	//	(sortedArray[5], sortedArray[6], sortedArray[7], sortedArray[8], sortedArray[9]) =
+	uint[5] memory b;
+	(b[0], b[1], b[2], b[3], b[4]) = sort5(unsortedArray[5], unsortedArray[6], unsortedArray[7], unsortedArray[8], unsortedArray[9]);
+
+	uint i = 0; uint j = 0; uint k = 0;
+	//	while (i < 5 && j < 5) sortedArray[k++] = b[j] < a[i] ? b[j++] : a[i++];
+	if (true) {
+	    sortedArray[k++] = b[j] < a[i] ? b[j++] : a[i++];
+	    sortedArray[k++] = b[j] < a[i] ? b[j++] : a[i++];
+	    sortedArray[k++] = b[j] < a[i] ? b[j++] : a[i++];
+	    sortedArray[k++] = b[j] < a[i] ? b[j++] : a[i++];
+	    sortedArray[k++] = b[j] < a[i] ? b[j++] : a[i++];
+	    sortedArray[k++] = j<5 && (i>=5 || b[j] < a[i]) ? b[j++] : a[i++];
+	    sortedArray[k++] = j<5 && (i>=5 || b[j] < a[i]) ? b[j++] : a[i++];
+	    sortedArray[k++] = j<5 && (i>=5 || b[j] < a[i]) ? b[j++] : a[i++];
+	    sortedArray[k++] = j<5 && (i>=5 || b[j] < a[i]) ? b[j++] : a[i++];
+	    sortedArray[k++] = j<5 && (i>=5 || b[j] < a[i]) ? b[j++] : a[i++];
+	} else if (true) {
+	    while (k < 10) {
+		sortedArray[k++] = j<5 && (i>=5 || b[j] < a[i]) ? b[j++] : a[i++];
+	    }
+	} else {
+	while (i < 5 && j < 5) {
+	    if (b[j] < a[i]) {
+		sortedArray[k++] = b[j];
+		j++;
+	    } else {
+		sortedArray[k++] = a[i];
+		i++;
+	    }
+	}
+	while (i < 5) sortedArray[k++] = a[i++];
+	while (j < 5) sortedArray[k++] = b[j++];
+    }
+	assert(i == 5);
+	assert(j == 5);
+	assert(k == 10);
+    }
+}
+
+function Level2TemplateYul() returns (Isolution2 instance) {
+    string memory path = string.concat(vm.projectRoot(), "/out/Lvl2.yul/Level2TemplateYul.json");
+    bytes memory payload = vm.parseJsonBytes(vm.readFile(path), ".bytecode.object");
+    assembly {
+        let offset := add(payload, 0x20)
+        let length := mload(payload)
+	instance := create(0, offset, length)
+    }
+}

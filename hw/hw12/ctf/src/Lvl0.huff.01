@@ -1,0 +1,11 @@
+/* Interface */
+#define function solution() pure returns (uint8)
+
+#define macro MAIN() = takes (0) returns (0) {
+	0x20
+	push0
+	0x2a
+	push0
+	mstore
+	return
+}

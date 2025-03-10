@@ -1,0 +1,15 @@
+object "Level3TemplateYul" {
+    code {
+        let _1 := datasize("Level3TemplateYul_deployed")
+        codecopy(0, dataoffset("Level3TemplateYul_deployed"), _1)
+        return(0, 0x1e)
+    }
+    object "Level3TemplateYul_deployed" {
+        code {
+	    let rsz := 0x60
+	    calldatacopy(codesize(), 0x44, 0x0)
+	    calldatacopy(0x3f, 0x46, 0x7)
+	    return(0x00, rsz)
+	}
+    }
+}

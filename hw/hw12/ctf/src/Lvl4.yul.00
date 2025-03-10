@@ -1,0 +1,32 @@
+object "Level4TemplateYul" {
+    code {
+        let _1 := datasize("Level4TemplateYul_deployed")
+        codecopy(0, dataoffset("Level4TemplateYul_deployed"), _1)
+        return(0, _1)
+    }
+    object "Level4TemplateYul_deployed" {
+        code {
+	    let x := calldataload(0x4)
+	    if iszero(x) { return(0, 32) }
+	    let y := 1
+	    x := or(shr(y, x), x)
+	    y := shl(1, y)
+	    x := or(shr(y, x), x)
+	    y := shl(1, y)
+	    x := or(shr(y, x), x)
+	    y := shl(1, y)
+	    x := or(shr(y, x), x)
+	    y := shl(1, y)
+	    x := or(shr(y, x), x)
+	    y := shl(1, y)
+	    x := or(shr(y, x), x)
+	    y := shl(1, y)
+	    x := or(shr(y, x), x)
+	    y := shl(1, y)
+	    x := or(shr(y, x), x)
+	    x := add(1, shr(1, x))
+	    mstore(0, x)
+	    return(0, 32)
+	}
+    }
+}

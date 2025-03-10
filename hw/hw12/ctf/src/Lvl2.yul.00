@@ -1,0 +1,82 @@
+object "Level2TemplateYul" {
+	code {
+		let siz := datasize("Level2TemplateYul_deployed")
+		let off := dataoffset("Level2TemplateYul_deployed")
+		codecopy(0, off, siz)
+		return(0, siz)
+	}
+
+	object "Level2TemplateYul_deployed" {
+		code {
+			let a := calldataload(0x004)
+			let b := calldataload(0x024)
+			let c := calldataload(0x044)
+			let d := calldataload(0x064)
+			let e := calldataload(0x084)
+			let f := calldataload(0x0a4)
+			let g := calldataload(0x0c4)
+			let h := calldataload(0x0e4)
+			let i := calldataload(0x104)
+			let j := calldataload(0x124)
+
+			if lt(b,a){let t:=a a:=b b:=t}
+			if lt(c,a){let t:=a a:=c c:=t}
+			if lt(d,a){let t:=a a:=d d:=t}
+			if lt(e,a){let t:=a a:=e e:=t}
+			if lt(f,a){let t:=a a:=f f:=t}
+			if lt(g,a){let t:=a a:=g g:=t}
+			if lt(h,a){let t:=a a:=h h:=t}
+			if lt(i,a){let t:=a a:=i i:=t}
+			if lt(j,a){let t:=a a:=j j:=t}
+			if lt(c,b){let t:=b b:=c c:=t}
+			if lt(d,b){let t:=b b:=d d:=t}
+			if lt(e,b){let t:=b b:=e e:=t}
+			if lt(f,b){let t:=b b:=f f:=t}
+			if lt(g,b){let t:=b b:=g g:=t}
+			if lt(h,b){let t:=b b:=h h:=t}
+			if lt(i,b){let t:=b b:=i i:=t}
+			if lt(j,b){let t:=b b:=j j:=t}
+			if lt(d,c){let t:=c c:=d d:=t}
+			if lt(e,c){let t:=c c:=e e:=t}
+			if lt(f,c){let t:=c c:=f f:=t}
+			if lt(g,c){let t:=c c:=g g:=t}
+			if lt(h,c){let t:=c c:=h h:=t}
+			if lt(i,c){let t:=c c:=i i:=t}
+			if lt(j,c){let t:=c c:=j j:=t}
+			if lt(e,d){let t:=d d:=e e:=t}
+			if lt(f,d){let t:=d d:=f f:=t}
+			if lt(g,d){let t:=d d:=g g:=t}
+			if lt(h,d){let t:=d d:=h h:=t}
+			if lt(i,d){let t:=d d:=i i:=t}
+			if lt(j,d){let t:=d d:=j j:=t}
+			if lt(f,e){let t:=e e:=f f:=t}
+			if lt(g,e){let t:=e e:=g g:=t}
+			if lt(h,e){let t:=e e:=h h:=t}
+			if lt(i,e){let t:=e e:=i i:=t}
+			if lt(j,e){let t:=e e:=j j:=t}
+			if lt(g,f){let t:=f f:=g g:=t}
+			if lt(h,f){let t:=f f:=h h:=t}
+			if lt(i,f){let t:=f f:=i i:=t}
+			if lt(j,f){let t:=f f:=j j:=t}
+			if lt(h,g){let t:=g g:=h h:=t}
+			if lt(i,g){let t:=g g:=i i:=t}
+			if lt(j,g){let t:=g g:=j j:=t}
+			if lt(i,h){let t:=h h:=i i:=t}
+			if lt(j,h){let t:=h h:=j j:=t}
+			if lt(j,i){let t:=i i:=j j:=t}
+
+			mstore(0x000, a)
+			mstore(0x020, b)
+			mstore(0x040, c)
+			mstore(0x060, d)
+			mstore(0x080, e)
+			mstore(0x0a0, f)
+			mstore(0x0c0, g)
+			mstore(0x0e0, h)
+			mstore(0x100, i)
+			mstore(0x120, j)
+
+			return(0, 320)
+		}
+	}
+}
