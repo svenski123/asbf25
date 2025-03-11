@@ -4,3 +4,15 @@ out = "out"
 libs = ["lib"]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+optimizer = true
+optimizer_runs = 1
+via_ir = true
+bytecode_hash = "none"
+cbor_metadata = false
+#solc_version = "0.8.25"
+#no_cache = true
+
+[profile.default.optimizer_details]
+inliner = false
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config

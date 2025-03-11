@@ -1,0 +1,2 @@
+1.1) A shift count greater than or equal to 256 will result in a zero value.
+1.2) A shift count greater than or equal to 256 will result in a zero value for an unsigned argument. If the argument is signed, then bits shifted in from the left will be the same as the most significant bit (or sign bit).
