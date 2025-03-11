@@ -8,3 +8,16 @@ The constructor code is not optimised; not only are two values needlessly placed
 The constructor will revert if non-zero value is passed to the function (i.e. CALLVALUE returns something other than zero).
 
 4.
+function func() public pure returns (uint256) {
+    assembly ("memory-safe") {
+        let x := 0x7
+        let y := 0x8
+        let z := add(x, y)
+        let a := mload(0x40)
+        mstore(a, z)
+        return(a, 32)
+    }
+}
+
+5.
+EXTCODECOPY copies code from another contract into working memory. One possible use for this would be for secure upgrade logic for an upgradeable proxy, such that the proxy requires the code of a proposed upgraded implementation contract to be valid against some sort of signature. Other uses would be to access some sort of shared read-only data embedded in the contract code of a deployed contract; this could be some large lookup dictionary table of data for instance.
