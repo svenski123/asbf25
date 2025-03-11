@@ -1,0 +1,25 @@
+1. VolcanoCoin
+
+- Allowance / Double withdrawl: increase/decrease allowance functions available for some mitigation
+- decimals(): contract decimals are 18
+- decimals(): contract approve() does not prohibit non-zero to non-zero approvals (vulnerability not directly related to VolcanoCoin)
+- decimals(): approve() does not treat UINT_MAX specially (vulnerability not directly to related VolcanoCoin)
+- External Calls: contract does not call any external contracts
+- External Calls: contract does not call any external contracts
+- Transfers: transfer()/transferFrom() always returns true or reverts
+- Transfers: transfer()/transferFrom() declared as returning bool
+- BalanceOf(): contract correctly implements balances; one to one identity mapping with uint256
+- Blacklistable: contract does not implement blacklist functionality
+- Mintable/Burnable: contract does not expose mint/burn functions; total supply fixed at construction
+- Pausable: contract is not pausable
+- Take fees from transfers: contract does not implement transfer fees
+- AirDrop interest to token holders: contract does not implement airdrops
+- Permissioned Addresses: contract does not implement whitelist/blacklist functionality
+- Forced Transfers: contract does not implement any administrator or superuser functionality
+- Callbacks / Hooks: contract does not implement callbacks / onward control transfers
+- Callbacks / Hooks: contract does not implement callbacks / onward control transfers; receiver mining gas token not applicable
+- Callbacks / Hooks: contract does not implement callbacks / onward control transfers; receiver blocking transfer not applicable
+- Forced Transfers: contract does not implement any administrator or superuser functionality; controller cannot steal funds
+- Control of totalSupply: mint/burn not exporsed; total supply is fixed and cannot be changed after construction
+- Cancel and Reissue: contract does not implement burn/cancel functionality
+- Whitelisting: contract does not implement whitelisting functionality
