@@ -7,3 +7,6 @@
 [submodule "hw/hw12/ctf/lib/forge-std"]
 	path = hw/hw12/ctf/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "hw/hw14/code/lib/forge-std"]
+	path = hw/hw14/code/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
