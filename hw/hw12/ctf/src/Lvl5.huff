@@ -1,5 +1,5 @@
 /* Interface */
-//#define function solution() pure returns (uint8)
+#define function solution(int256 a, int256 b) pure returns (int256)
 
 #define macro CONSTRUCTOR() = takes (0) returns (0) {
 __codesize(MAIN)

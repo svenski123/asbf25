@@ -1,5 +1,5 @@
 /* Interface */
-//#define function solution() pure returns (uint8)
+#define function solution(uint256 number) pure returns (uint256)
 
 #define constant BITS0_ODD = 0x5555555555555555555555555555555555555555555555555555555555555555
 #define constant BITS0_EVE = 0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
